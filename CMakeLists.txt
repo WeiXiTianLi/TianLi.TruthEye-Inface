@@ -22,3 +22,4 @@ include_directories(${PROJECT_SOURCE_DIR}/source)
 
 # 包含子项目。
 add_subdirectory(source)
+add_subdirectory(test)

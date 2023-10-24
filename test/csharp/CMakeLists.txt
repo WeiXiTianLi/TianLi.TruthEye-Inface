@@ -4,7 +4,7 @@ set(CMAKE_CSharp_FLAGS "/langversion:latest /platform:x64")
 
 add_executable(TianLiTruthEye.csharp.test
 	Program.cs
-	"../../TianLi.TruthEye/include/TianLi.TruthEye.cs"
+	"${CMAKE_SOURCE_DIR}/include/TianLi.TruthEye.cs"
 	)
 set_property(TARGET TianLiTruthEye.csharp.test PROPERTY VS_DOTNET_REFERENCES
 	"Microsoft.CSharp"
