@@ -4,7 +4,7 @@
 cmake_minimum_required (VERSION 3.20)
 
 # 设置第三方目录
-set(ThridPatryDir ${CMAKE_SOURCE_DIR}/third_party)
+set(ThirdPartyDir ${CMAKE_SOURCE_DIR}/third_party)
 
 if (MSVC)
     add_compile_options(/utf-8)

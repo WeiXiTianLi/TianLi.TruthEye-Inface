@@ -1,19 +1,16 @@
-﻿# CMakeList.txt: QAppMutRelease 的 CMake 项目，在此处包括源代码并定义
-# 项目特定的逻辑。
-#
-project(TianLi.TruthEye.Inface VERSION 1.0.0)
+﻿project(TianLi.TruthEye.Inface VERSION 1.0.0)
 
 # define 
 add_definitions(-DTIANLI_TRUTHEYE_EXPORTS)
 add_definitions(-DTIANLI_TRUTHEYE_IMPL)
 
 # 添加本地第三方库
-include_directories("${ThridPatryDir}/cpr/include")
-include_directories("${ThridPatryDir}/spdlog/include")
+include_directories(${ThirdPartyDir}/cpr/include)
+include_directories(${ThirdPartyDir}/spdlog/include)
 #include_directories("../3rdparty/minizip/include")
 # 添加库搜索路径
-link_directories("${ThridPatryDir}/cpr/lib")
-link_directories("${ThridPatryDir}/spdlog/lib")
+link_directories(${ThirdPartyDir}/cpr/lib)
+link_directories(${ThirdPartyDir}/spdlog/lib)
 #link_directories("../3rdparty/minizip/lib")
 
 if(MSVC)
