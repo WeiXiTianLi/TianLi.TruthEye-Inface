@@ -1,7 +1,7 @@
-// QAppMutRelease.cpp: ¶¨ÒåÓ¦ÓÃ³ÌÐòµÄÈë¿Úµã¡£
+// QAppMutRelease.cpp: ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµã¡£
 //
 #define TIANLI_TRUTHEYE_IMPL
-#include "../TianLi.TruthEye/include/TianLi.TruthEye.h"
+#include "../include/TianLi.TruthEye.h"
 // std
 #include <thread>
 #include <chrono>
@@ -45,6 +45,7 @@ std::string format_json(std::vector<obj> objs)
     }
     return json_head + json_body + json_tail;
 }
+std::mutex m;
 static void progress(int progress, int total)
 {
     std::cout << "download progress: " << progress << "/" << total << std::endl;
@@ -53,9 +54,14 @@ static void progress(int progress, int total)
 int main()
 {
     // TianLiTruthEye_Impl_Async_Download(progress);
+    TianLiTruthEye_Impl_Auto_Checkout_Version(nullptr, 0, nullptr, nullptr);
+    std::this_thread::sleep_for(2s);
 
     std::string path = "TianLi.TruthEye.dll";
-    TianLiTruthEye_Impl_Load(path.c_str());
+    if (TianLiTruthEye_Impl_Load(path.c_str()) == false)
+    {
+        return -1;
+    }
     TianLiTruthEye_CreateWindow();
     TianLiTruthEye_ShowWindow();
     char version[100];
@@ -63,8 +69,8 @@ int main()
     std::cout << version << std::endl;
 
     std::vector<obj> objs;
-    objs.push_back({"·ç¾§µû", "https://tiles.yuanshen.site/d/marker_image/icons/%E6%B5%8B%E8%AF%95%E5%9B%BE%E6%A0%871.png", {{10, 10}, {12, 12}}});
-    objs.push_back({"±¦Ïä", "https://tiles.yuanshen.site/d/marker_image/icons/%E6%B5%8B%E8%AF%95%E5%9B%BE%E6%A0%871.png", {{20, 30}}});
+    objs.push_back({"ï¿½ç¾§ï¿½ï¿½", "https://tiles.yuanshen.site/d/marker_image/icons/%E6%B5%8B%E8%AF%95%E5%9B%BE%E6%A0%871.png", {{10, 10}, {12, 12}}});
+    objs.push_back({"ï¿½ï¿½ï¿½ï¿½", "https://tiles.yuanshen.site/d/marker_image/icons/%E6%B5%8B%E8%AF%95%E5%9B%BE%E6%A0%871.png", {{20, 30}}});
     //
 
     for (int i = 0; i < 10; i++)
@@ -75,7 +81,7 @@ int main()
         this_thread::sleep_for(100ms);
     }
     std::string test = R"({"version": "1.0.1","type" : "update","content" : [{"name": "item","url" : "https://tiles.yuanshen.site/d/marker_image/icons/%E6%B5%8B%E8%AF%95%E5%9B%BE%E6%A0%871.png","points" : [{"x": 14,"y" : -8}],"content_info" : {
-  "text": "ÕâÊÇÒ»¸ö¡¾Íê³ÉÀ×öªÌ½Õë½âÃÜ¡¿ºóÐ¯´øÀ×ÖÖ×ÓÊ¹ÓÃÀ×¼«·Éµ½¿ÕÖÐ»ñµÃµÄ¡¾É¢Ê§µÄÀ×ÉñÍ«¡¿",
+  "text": "ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ï¿½Ü¡ï¿½ï¿½ï¿½Ð¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½×¼ï¿½ï¿½Éµï¿½ï¿½ï¿½ï¿½Ð»ï¿½ÃµÄ¡ï¿½É¢Ê§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í«ï¿½ï¿½",
   "picture_url": "https://yuanshen.site/comment_png/288_48.jpg"
 }}]})";
     TianLiTruthEye_SetJsonParams(test.c_str(), test.size());
