@@ -1,4 +1,4 @@
-﻿project(TianLi.TruthEye.Inface VERSION 1.0.0)
+﻿project(TianLi.TruthEye.Inface VERSION 0.0.1)
 
 # define 
 add_definitions(-DTIANLI_TRUTHEYE_EXPORTS)
