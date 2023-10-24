@@ -18,7 +18,7 @@ BEGIN
             VALUE "FileDescription", "TianLi.TruthEye.Inface Library"
             VALUE "FileVersion", "${PROJECT_VERSION_MAJOR}, ${PROJECT_VERSION_MINOR}, ${PROJECT_VERSION_PATCH}"
             VALUE "InternalName", "TianLi.TruthEye.Inface"
-            VALUE "LegalCopyright", "Copyright (C) 2023 Áª¥Á≥ªÂ§©ÁêÜ"
+            VALUE "LegalCopyright", "Copyright (C) 2023 Œ¨œµÃÏ¿Ì"
             VALUE "OriginalFilename", "TianLi.TruthEye.Inface.dll"
             VALUE "ProductName", "TianLi.TruthEye.Inface"
             VALUE "ProductVersion", "${PROJECT_VERSION_MAJOR}, ${PROJECT_VERSION_MINOR}, ${PROJECT_VERSION_PATCH}"
