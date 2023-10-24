@@ -18,7 +18,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
 # 包含目录
-include_directories ("${PROJECT_SOURCE_DIR}/source")
+include_directories(${PROJECT_SOURCE_DIR}/source)
 
 # 包含子项目。
-add_subdirectory ("source")
+add_subdirectory(source)

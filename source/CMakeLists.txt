@@ -21,12 +21,10 @@ if(MSVC)
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/inface.version.rc.in "${VERSION_RC}")
 endif()
 
-# vcpkg
-# 将源代码添加到此项目的可执行文件。
+# 将源代码添加到此项目的可执行文件
 add_library(${PROJECT_NAME} SHARED ${VERSION_RC}
 	"TianLi.TruthEye.Inface.cpp" 
 )
-
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded")
 
