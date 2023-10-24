@@ -1,4 +1,4 @@
-// QApp.cpp: 定义动态链接库的实现
+﻿// QApp.cpp: 定义动态链接库的实现
 //
 
 #include "../include/TianLi.TruthEye.h"
@@ -26,6 +26,22 @@
 // cpr
 #include <cpr/cpr.h>
 #include <curl/curl.h>
+
+bool is_utf8(const std::string &string)
+{
+    int len = MultiByteToWideChar(CP_UTF8, 0, string.c_str(), -1, NULL, 0);
+    wchar_t *wstr = new wchar_t[len + 1];
+    memset(wstr, 0, len * 2 + 2);
+    MultiByteToWideChar(CP_UTF8, 0, string.c_str(), -1, wstr, len);
+    len = WideCharToMultiByte(CP_UTF8, 0, wstr, -1, NULL, 0, NULL, NULL);
+    char *str = new char[len + 1];
+    memset(str, 0, len + 1);
+    WideCharToMultiByte(CP_UTF8, 0, wstr, -1, str, len, NULL, NULL);
+    std::string ret_string = str;
+    delete[] str;
+    delete[] wstr;
+    return (ret_string == string);
+}
 
 std::string utf8_to_gbk(const std::string &utf8_string)
 {
@@ -59,6 +75,18 @@ std::string gbk_to_utf8(const std::string &gbk_string)
     delete[] utf8_string;
     delete[] utf8_wstring;
     return ret_string;
+}
+
+std::string to_utf8(const std::string &string)
+{
+    if (is_utf8(string))
+    {
+        return string;
+    }
+    else
+    {
+        return gbk_to_utf8(string);
+    }
 }
 
 class lib_impl
